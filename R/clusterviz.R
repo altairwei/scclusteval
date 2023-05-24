@@ -188,7 +188,7 @@ ParameterSetScatterPlot<- function(stable_clusters,
                         ggplot2::geom_point(color = "blue") +
                         ggplot2::geom_line(ggplot2::aes(group = 1), color = "red") +
                         ggplot2::scale_y_continuous(labels = scales::percent) +
-                        ggplot2::facet_grid(rows = vars(.data[[facet_rows]]), cols = vars(.data[[facet_cols]])) +
+                        ggplot2::facet_grid(rows = ggplot2::vars(.data[[facet_rows]]), cols = ggplot2::vars(.data[[facet_cols]])) +
                         ggplot2::xlab(x_var) +
                         ggplot2::ylab(y_var)
         }
@@ -196,7 +196,7 @@ ParameterSetScatterPlot<- function(stable_clusters,
                 p<- ggplot2::ggplot(df, ggplot2::aes(x=.data[[x_var]], y = .data[[y_var]])) +
                         ggplot2::geom_point() +
                         ggplot2::geom_line(ggplot2::aes(group = category, color = category )) +
-                        ggplot2::facet_grid(rows = vars(.data[[facet_rows]]), cols = vars(.data[[facet_cols]])) +
+                        ggplot2::facet_grid(rows = ggplot2::vars(.data[[facet_rows]]), cols = ggplot2::vars(.data[[facet_cols]])) +
                         ggplot2::xlab(x_var) +
                         ggplot2::ylab(y_var)
         }
