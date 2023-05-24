@@ -171,7 +171,7 @@ ParameterSetScatterPlot<- function(stable_clusters,
                 dplyr::ungroup() %>%
                 dplyr::mutate(total = purrr::map_dbl(stable_cluster, ~ length(.x$stable_cluster))) %>%
                 dplyr::mutate(stable = purrr::map_dbl(stable_cluster, ~ .x$number_of_stable_cluster)) %>%
-                dplyr::mutate(percentage = map2_dbl(original_ident_full, stable_cluster,
+                dplyr::mutate(percentage = purrr::map2_dbl(original_ident_full, stable_cluster,
                                                     function(x, y) CalculatePercentCellInStable(x,                                                                                      y$stable_cluster))) %>%
                 dplyr::select(-data, - stable_cluster, -original_ident_full) %>%
                 dplyr::mutate_if(is.character, function(x) as.factor(as.numeric(x))) %>%
