@@ -17,7 +17,7 @@ CalculateSilhouette<- function(object, dims = 1:50){
         }
         cell_distance<- dist(object@reductions$pca@cell.embeddings[, dims])
         # or as.integer
-        cell_cluster<- as.numeric(as.character(Idents(object)))
+        cell_cluster<- as.numeric(as.character(Seurat::Idents(object)))
         silhouette_score<- cluster::silhouette(cell_cluster, cell_distance)
         silhouette_score<- tibble::tibble(cluster = silhouette_score[,1],
                                           width = silhouette_score[,3],
