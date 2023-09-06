@@ -127,7 +127,6 @@ JaccardRainCloudPlot<- function(idents1, idents2, title= NULL){
         mats<- AssignHighestJaccard(idents1, idents2)
         g<- mats %>% tibble::as_tibble() %>% tibble::rownames_to_column(var = "bootstrap")  %>%
                 tidyr::gather(-bootstrap, key= "cluster", value = "jaccard") %>%
-                dplyr::mutate(cluster = as.factor(as.numeric(.$cluster))) %>%
                 ggplot2::ggplot(ggplot2::aes(x = cluster, y = jaccard, fill = cluster)) +
                 geom_flat_violin(position = position_nudge(x = .2, y = 0), alpha = .8) +
                 ggplot2::geom_point(ggplot2::aes(y = jaccard, color = cluster), position = position_jitter(width = .15), size = .5, alpha = 0.8) +
